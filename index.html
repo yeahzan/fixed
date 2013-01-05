@@ -1,0 +1,82 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="jquery-1.8.3.js"></script>	
+<style type="text/css">
+	*{
+		margin: 0px;
+		padding: 0px;
+	}
+	body{
+		text-align: center;
+	}
+	#wrapper{
+		height: 2000px;
+		position: relative;
+	}
+	#sideBar{
+		width: 100px;
+		height: 300px;
+		position: absolute;
+		top: 0px;
+		left: 100px;
+		background: #999;
+		margin-top: 20px;
+	}
+	#sideBar.fixed{
+		position: fixed;
+		top: 0px;
+	}
+	#content{
+		padding-left: 300px;
+		padding-top: 200px;
+	}
+	#sideWrapper{
+	  position: absolute;
+	  width:280px;
+	  top: 100px;
+	}
+</style>
+<script type="text/javascript">
+	$(function() {
+		var $sideBar = $("#sideBar");
+
+		//左侧栏与顶部的高度
+		var top = $sideBar.offset().top - parseFloat($sideBar.css("marginTop").replace(/auto/,0));
+		var msie6 = $.browser == 'msie' && $.browser.version < 7;
+		
+		if (!msie6) {
+			$(window).scroll(
+				//页面滚动条滚动式触发效果
+				function() {
+					var scrollTop = $(this).scrollTop();//拖动的高度
+					if(scrollTop > top) {
+						$sideBar.addClass("fixed");
+					}else{
+						$sideBar.removeClass("fixed");
+					}
+				});
+		}
+	});
+	
+</script>
+</head>
+
+<body>
+	<div id="wrapper">
+		<div id="sideWrapper">
+			<div id="sideBar">
+				<h3>天猫侧栏</h3>
+			</div>
+		</div>
+		<div id="content">
+			<p>
+				中国共产党是中国工人阶级的先锋队，同时是中国人民和中华民族的先锋队，是中国特色社会主义事业的领导核心，代表中国先进生产力的发展要求，代表中国先进文化的前进方向，代表中国最广大人民的根本利益。党的最高理想和最终目标是实现共产主义。中国共产党以马克思列宁主义、毛泽东思想、邓小平理论和“三个代表”重要思想作为自己的行动指南。在社会主义初级阶段领导和团结全国各族人民，以经济建设为中心，坚持四项基本原则，坚持改革开放，自力更生，艰苦创业，为把我国建设成为富强、民主、文明、和谐的社会主义现代化国家而奋斗。 
+			</p>
+		</div>
+	</div>
+</body>
+
